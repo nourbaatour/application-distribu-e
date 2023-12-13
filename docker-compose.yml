@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  discovery-server:
+    build: ../../discovery-server
+    ports:
+      - "8761:8761"
+    image: "discovery-server"
+
+  depot:
+    build: .
+    ports:
+      - "8091:8091"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8761/eureka/
+    image: "depot"
