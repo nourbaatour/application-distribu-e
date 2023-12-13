@@ -1,4 +1,5 @@
 package com.depot.depot.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,4 +22,9 @@ public class Category {
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Product> products;
+
+    @JsonIgnore
+    public List<Product> getProducts() {
+        return products;
+    }
 }
