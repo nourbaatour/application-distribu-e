@@ -14,9 +14,9 @@ public class ClientService {
     }
 
 
-    public Client updateClient(long id, Client newClient) {
-        if (clientRepository.findById(id).isPresent()) {
-            Client existingClient = clientRepository.findById(id).get();
+    public Client updateClient(long idClient, Client newClient) {
+        if (clientRepository.findById(idClient).isPresent()) {
+            Client existingClient = clientRepository.findById(idClient).get();
             existingClient.setName(newClient.getName());
             existingClient.setSurname(newClient.getSurname());
             existingClient.setSex(newClient.getSex());
