@@ -11,7 +11,7 @@ public class Client implements Serializable {
 
     @jakarta.persistence.Id
     @GeneratedValue
-    public long Id;
+    public long IdClient;
 
     public String name;
     public String surname;

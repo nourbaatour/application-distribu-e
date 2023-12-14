@@ -1,14 +1,18 @@
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
+
     public  Client addClient(Client client){
         return clientRepository.save(client);
     }
+
 
     public Client updateClient(long id, Client newClient) {
         if (clientRepository.findById(id).isPresent()) {
@@ -27,6 +31,7 @@ public class ClientService {
         } else
             return null;
     }
+
     public String deleteClient(long id) {
         if (clientRepository.findById(id).isPresent()) {
             clientRepository.deleteById(id);
@@ -34,5 +39,14 @@ public class ClientService {
         } else
             return "client non supprimé";
     }
+
+    public List<Client> getClients() {
+        return (List<Client>) clientRepository.findAll();
+    }
+
+    public Client getClientById(long idClient) {
+        return clientRepository.findById(idClient).orElse(null);
+    }
+
 
 }
